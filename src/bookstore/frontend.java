@@ -85,13 +85,17 @@ public class frontend {
                         Statement stmt3 = c2.createStatement();
                         stmt3.executeUpdate("UPDATE BOOK SET STATUSFLAG =" + newStatus + " WHERE bid=" + selection + ";");
                         if (newStatus)
+                        {
                             stmt3.executeUpdate("INSERT INTO bookapproval (email, bid) VALUES ('admin1@gmail.com', " + selection + ");");
+                            System.out.println("Inserted new entry in bookApproval.");
+                        }
+                            
                         else
+                        {
                             stmt3.executeUpdate("DELETE FROM bookapproval WHERE bid=" + selection + ";");
+                            System.out.println("Removed entry from bookApproval.");
+                        }
                         stmt3.close();
-
-
-
                     }
                     rs2.close();
                     stmt2.close();
