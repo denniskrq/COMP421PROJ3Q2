@@ -64,7 +64,6 @@ public class frontend {
                 System.err.println(e.getClass().getName()+": " + e.getMessage());
                 System.exit(0);
             }
-            System.out.println("got here 1");
             System.out.print("enter bid of book whose status will be changed (enter 0 to quit): ");
             selection = scan.nextInt();
             if (selection == 0)
