@@ -1,55 +1,40 @@
-//package bookstore;
-
 import java.util.Scanner;
 import java.sql.*;
 
-
-// javac -cp ./pos*.jar frontend.java && java -cp .:./pos*.jar frontend;
-
-/**
- * Created by Dennis on 2017-03-17.
- */
 public class frontend {
     public static void main(String[] args)
     {
-
-        // gui stuff
-        int selection = 0;
-        System.out.println("MENU");
-        System.out.println("Option 1: approve a book");
-        System.out.println("Option 2: XXX");
-        System.out.println("Option 3: XXX");
-        System.out.println("Option 4: XXX");
-        System.out.println("Option 5: XXX");
-        System.out.println("Option 6: QUIT");
-        while (selection != 6)
+        while (true)
         {
+            // gui stuff
+            int selection = 0;
+            System.out.println("\nMENU");
+            System.out.println("Option 1: approve a book");
+            System.out.println("Option 2: XXX");
+            System.out.println("Option 3: XXX");
+            System.out.println("Option 4: XXX");
+            System.out.println("Option 5: XXX");
+            System.out.println("Option 6: QUIT");
+
             Scanner sc = new Scanner(System.in);
             selection = sc.nextInt();
             System.out.printf("You selected option %d\n", selection);
-            switch (selection)
-            {
-                case 1:
-                    approveBook();
-                    continue;
-                case 2:
-                    option2();
-                    continue;
-                case 3:
-                    option3();
-                    continue;
-                case 4:
-                    option4();
-                    continue;
-                case 5:
-                    option5();
-                    continue;
-                default:
-                    System.out.println("Invalid selection, try again...");
-            }
+            
+            if (selection == 6)
+                break;
+            else if (selection == 1)
+                approveBook();
+            else if (selection == 2)
+                option2();
+            else if (selection == 3)
+                option3();
+            else if (selection == 4)
+                option4();
+            else if (selection == 5)
+                option5();  
         }
-
         System.out.println("Exiting...");
+        System.exit(0);
     }
 
     private static void approveBook()
