@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.sql.*;
 
-public class frontend {
+    public class frontend {
     public static void main(String[] args)
     {
         while (true)
@@ -43,11 +43,8 @@ public class frontend {
         Statement stmt = null;
         int selection;
         try {
-            System.out.println("got here 1");
             Class.forName("org.postgresql.Driver");
-            System.out.println("got here 2");
             c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-            c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
             while(true)
@@ -59,7 +56,7 @@ public class frontend {
                     int bid = rs.getInt("bid");
                     boolean statusFlag = rs.getBoolean("statusflag");
                     String title = rs.getString("title");
-                    System.out.println("bid: " + bid + "\tstatusFlag: " + statusFlag + "\ttitle: " + title);
+                    System.out.println("\tbid: " + bid + "\t\tstatusFlag: " + statusFlag + "\t\ttitle: " + title);
                 }
                 rs.close();
 
@@ -68,8 +65,8 @@ public class frontend {
                 selection = sc.nextInt();
                 if (selection == 0)
                 {
-                    c.close();
                     stmt.close();
+                    c.close();
                     return;
                 }
                 stmt.executeUpdate("UPDATE BOOK SET STATUSFLAG = true WHERE bid=" + selection + ";");
