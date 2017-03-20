@@ -2,6 +2,7 @@
 <module type="JAVA_MODULE" version="4">
   <component name="EclipseModuleManager">
     <libelement value="jar://$USER_HOME$/Downloads/Stuff/postgresql-42.0.0.jar!/" />
+    <libelement value="file://C:/Users/denniskrq/Downloads/Stuff/postgresql-42.0.0.jar" />
     <src_description expected_position="0">
       <src_folder value="file://$MODULE_DIR$/src" expected_position="0" />
     </src_description>
@@ -14,10 +15,10 @@
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library name="postgresql-42.0.0.jar">
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/Stuff/postgresql-42.0.0.jar!/" />
+          <root url="file://C:/Users/denniskrq/Downloads/Stuff/postgresql-42.0.0.jar" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
