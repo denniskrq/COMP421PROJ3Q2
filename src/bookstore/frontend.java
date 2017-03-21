@@ -106,7 +106,7 @@ public class frontend {
                 catch(Exception e)
                 {
                     System.err.println(e.getClass().getName()+": " + e.getMessage());
-                    System.exit(0);
+                    System.out.println("Operation failed!");
                 }
             }
         }   
@@ -134,7 +134,6 @@ public class frontend {
             c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
             System.out.println("Opened database successfully");
             stmt = c.createStatement();
-            System.out.println("INSERT INTO Admin (email, birthday, phoneNumber, name, password) VALUES ('"+email+"','"+birthday+"','"+phoneNumber+"','"+name+"','"+password+"');");
             stmt.executeUpdate("INSERT INTO Admin (email, birthday, phoneNumber, name, password) VALUES ('"+email+"','"+birthday+"','"+phoneNumber+"','"+name+"','"+password+"');");
             stmt.close();
             c.close();
@@ -142,6 +141,7 @@ public class frontend {
         catch(Exception e)
         {
             System.err.println(e.getClass().getName()+": " + e.getMessage());
+            System.out.println("Operation failed!");
         }
         System.out.println("Admin inserted succesfully!");
     }
