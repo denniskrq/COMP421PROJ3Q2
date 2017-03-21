@@ -8,7 +8,7 @@ public class frontend {
             int selection = 0;
             System.out.println("\nMENU");
             System.out.println("Option 1: manage book approval");
-            System.out.println("Option 2: XXX");
+            System.out.println("Option 2: add new admin");
             System.out.println("Option 3: XXX");
             System.out.println("Option 4: XXX");
             System.out.println("Option 5: XXX");
@@ -23,13 +23,15 @@ public class frontend {
             else if (selection == 1)
                 manageBookStatus();
             else if (selection == 2)
-                option2();
+                addAdmin();
             else if (selection == 3)
                 option3();
             else if (selection == 4)
                 option4();
             else if (selection == 5)
                 option5();
+            else
+                System.out.println("Invalid selection. Please try again.");
         }
         System.out.println("Exiting...");
         System.exit(0);
@@ -110,8 +112,38 @@ public class frontend {
         }   
     }
 
-    private static void option2() {
+    private static void addAdmin() 
+    {
+        Scanner scan = new Scanner(System.in);
+        Statement stmt = null;
+        Connection c = null;
 
+        System.out.print("Please enter the new admin's email address: ");
+        String email = scan.next();
+        System.out.println("Please enter the admin's date of birth (YYYY-MM-DD): ");
+        String birthday = scan.next();
+        System.out.println("Please enter the admin's phone number (max 10 characters): ");
+        String phoneNumber = scan.next();
+        System.out.println("Please enter the admin's name (max 20 characters): ");
+        String name = scan.next();
+        System.out.println("Please enter the admin's desired password (max 50 characters): ");
+        String password = scan.next();
+        try
+        {
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
+            System.out.println("Opened database successfully");
+            stmt = c.createStatement();
+            System.out.println("INSERT INTO Admin (email, birthday, phoneNumber, name, password) VALUES ('"+email+"','"+birthday+"','"+phoneNumber+"','"+name+"','"+password+"');");
+            stmt.executeUpdate("INSERT INTO Admin (email, birthday, phoneNumber, name, password) VALUES ('"+email+"','"+birthday+"','"+phoneNumber+"','"+name+"','"+password+"');");
+            stmt.close();
+            c.close();
+        }
+        catch(Exception e)
+        {
+            System.err.println(e.getClass().getName()+": " + e.getMessage());
+        }
+        System.out.println("Admin inserted succesfully!");
     }
 
     private static void option3() {
