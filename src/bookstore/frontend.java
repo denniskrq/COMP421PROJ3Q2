@@ -1,3 +1,5 @@
+package bookstore;
+
 import java.util.Scanner;
 import java.sql.*;
 
