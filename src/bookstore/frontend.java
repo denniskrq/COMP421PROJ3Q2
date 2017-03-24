@@ -48,7 +48,7 @@ public class frontend {
             try {
                 Class.forName("org.postgresql.Driver");
                 Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-                System.out.println("Opened database successfully");
+                System.out.println("Opened database successfully\n");
                 Statement stmt = c.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM BOOK;");
                 while (rs.next())
@@ -78,7 +78,7 @@ public class frontend {
                 {
                     Class.forName("org.postgresql.Driver");
                     Connection c2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-                    System.out.println("Opened database successfully");
+                    System.out.println("Opened database successfully\n");
                     Statement stmt2 = c2.createStatement();
                     ResultSet rs2 = stmt2.executeQuery("select statusflag from book where bid=" + selection + ";");
                     while (rs2.next())
@@ -133,7 +133,7 @@ public class frontend {
         {
             Class.forName("org.postgresql.Driver");
             c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-            System.out.println("Opened database successfully");
+            System.out.println("Opened database successfully\n");
             stmt = c.createStatement();
             stmt.executeUpdate("INSERT INTO Admin (email, birthday, phoneNumber, name, password) VALUES ('"+email+"','"+birthday+"','"+phoneNumber+"','"+name+"','"+password+"');");
             stmt.close();
@@ -148,13 +148,13 @@ public class frontend {
     }
 
     private static void createNewReview() {
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in).useDelimiter("\n");
         boolean isValidPassword = false;
         
         try {
             Class.forName("org.postgresql.Driver");
             Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-            System.out.println("Opened database successfully");
+            System.out.println("Opened database successfully\n");
             Statement stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM BOOK;");
             while (rs.next())
@@ -188,7 +188,7 @@ public class frontend {
         {
             Class.forName("org.postgresql.Driver");
             Connection c2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-            System.out.println("Opened database successfully");
+            System.out.println("Opened database successfully\n");
             Statement stmt2 = c2.createStatement();
             ResultSet rs2 = stmt2.executeQuery("SELECT email FROM customer WHERE password=" + "'" + password + "' ;");
             while(rs2.next())
@@ -218,7 +218,7 @@ public class frontend {
             {
                 Class.forName("org.postgresql.Driver");
                 Connection c3 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-                System.out.println("Opened database successfully");
+                System.out.println("Opened database successfully\n");
                 Statement stmt3 = c3.createStatement();
                 stmt3.executeUpdate("INSERT INTO reviews (rating, description, bid, email) VALUES ('"+rating+"','"+description+"','"+bid+"','"+email+"');");
                 stmt3.close();
@@ -242,7 +242,7 @@ public class frontend {
         try {
             Class.forName("org.postgresql.Driver");
             Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-            System.out.println("Opened database successfully");
+            System.out.println("Opened database successfully\n");
             Statement stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM BOOK;");
             while (rs.next())
@@ -264,13 +264,13 @@ public class frontend {
         System.out.print("Please enter the bid of the book for which you'd like to update the categories: ");
         int bid = scan.nextInt();
 
-        System.out.print("This book is currently in the following categories: ");
         try {
             Class.forName("org.postgresql.Driver");
             Connection c2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-            System.out.println("Opened database successfully");
+            System.out.println("Opened database successfully\n");
             Statement stmt2 = c2.createStatement();
             ResultSet rs2 = stmt2.executeQuery("SELECT name FROM categories WHERE cid IN (SELECT cid FROM bookcategory WHERE bid = " + bid + ");");
+            System.out.print("This book is currently in the following categories: ");
             while (rs2.next())
             {
                 String name = rs2.getString("name");
@@ -300,7 +300,7 @@ public class frontend {
                 {
                     Class.forName("org.postgresql.Driver");
                     Connection c3 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-                    System.out.println("Opened database successfully");
+                    System.out.println("Opened database successfully\n");
                     Statement stmt3 = c3.createStatement();
                     ResultSet rs3 = stmt3.executeQuery("SELECT * FROM Categories;");
                     while (rs3.next())
@@ -334,14 +334,14 @@ public class frontend {
                     {
                         Class.forName("org.postgresql.Driver");
                         Connection c4 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-                        System.out.println("Opened database successfully");
+                        System.out.println("Opened database successfully\n");
                         Statement stmt4 = c4.createStatement();
                         stmt4.executeUpdate("INSERT INTO bookcategory (cid, bid) VALUES ('" + cid + "','" + bid + "');");
                       
                         stmt4.close();
                         c4.close();
 
-                        System.out.println("Category added successfully!");
+                        System.out.println("Category added successfully\n!");
                     }
                     catch(Exception e)
                     {
@@ -361,7 +361,7 @@ public class frontend {
             {
                 Class.forName("org.postgresql.Driver");
                 Connection c5 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-                System.out.println("Opened database successfully");
+                System.out.println("Opened database successfully\n");
                 Statement stmt5 = c5.createStatement();
                 stmt5.executeUpdate("DELETE FROM bookcategory WHERE cid = "+ cidDelete +" AND bid = " + bid +";");
                 stmt5.close();
@@ -384,7 +384,7 @@ public class frontend {
         try {
                 Class.forName("org.postgresql.Driver");
                 Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-                System.out.println("Opened database successfully");
+                System.out.println("Opened database successfully\n");
                 Statement stmt = c.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM BOOK;");
                 while (rs.next())
@@ -411,7 +411,7 @@ public class frontend {
         try {
             Class.forName("org.postgresql.Driver");
             Connection c2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-            System.out.println("Opened database successfully");
+            System.out.println("Opened database successfully\n");
             Statement stmt2 = c2.createStatement();
             ResultSet rs2 = stmt2.executeQuery("SELECT * FROM reviews WHERE bid=" + bid + ";");
             while (rs2.next())
@@ -438,7 +438,7 @@ public class frontend {
         try {
             Class.forName("org.postgresql.Driver");
             Connection c3 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs421", "cs421g02", "Team2pass");
-            System.out.println("Opened database successfully");
+            System.out.println("Opened database successfully\n");
             Statement stmt3 = c3.createStatement();
             
             if(rid==0)
@@ -449,6 +449,8 @@ public class frontend {
 
             stmt3.close();
             c3.close();
+
+            System.out.println("SUCCESS!");
         }
         catch(Exception e)
         {
